@@ -9,8 +9,8 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
-      "giphy/*": ["src/*"],
-      "giphy": ["src/index.ts"]
+      "rs-giphy-test/*": ["src/*"],
+      "rs-giphy-test": ["src/index.ts"]
     },
     "noEmit": true,
 

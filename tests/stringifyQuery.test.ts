@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { Giphy } from 'giphy';
+import { Giphy } from 'rs-giphy-test';
 
 const { stringifyQuery } = Giphy.prototype as any;
 
