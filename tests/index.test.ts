@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIPromise } from 'giphy/api-promise';
+import { APIPromise } from 'rs-giphy-test/api-promise';
 
 import util from 'node:util';
-import Giphy from 'giphy';
-import { APIUserAbortError } from 'giphy';
+import Giphy from 'rs-giphy-test';
+import { APIUserAbortError } from 'rs-giphy-test';
 const defaultFetch = fetch;
 
 describe('instantiate client', () => {

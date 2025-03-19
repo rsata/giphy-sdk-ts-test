@@ -1,4 +1,4 @@
-import { createPathTagFunction, encodeURIPath } from 'giphy/internal/utils/path';
+import { createPathTagFunction, encodeURIPath } from 'rs-giphy-test/internal/utils/path';
 import { inspect } from 'node:util';
 
 describe('path template tag function', () => {
