@@ -7,8 +7,8 @@ const config: JestConfigWithTsJest = {
     '^.+\\.(t|j)sx?$': ['@swc/jest', { sourceMaps: 'inline' }],
   },
   moduleNameMapper: {
-    '^giphy$': '<rootDir>/src/index.ts',
-    '^giphy/(.*)$': '<rootDir>/src/$1',
+    '^rs-giphy-test$': '<rootDir>/src/index.ts',
+    '^rs-giphy-test/(.*)$': '<rootDir>/src/$1',
   },
   modulePathIgnorePatterns: [
     '<rootDir>/ecosystem-tests/',
