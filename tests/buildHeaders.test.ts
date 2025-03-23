@@ -1,5 +1,5 @@
 import { inspect } from 'node:util';
-import { buildHeaders, type HeadersLike, type NullableHeaders } from 'giphy/internal/headers';
+import { buildHeaders, type HeadersLike, type NullableHeaders } from 'rs-giphy-test/internal/headers';
 
 function inspectNullableHeaders(headers: NullableHeaders) {
   return `NullableHeaders {${[

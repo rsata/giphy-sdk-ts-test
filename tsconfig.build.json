@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "giphy/*": ["dist/src/*"],
-      "giphy": ["dist/src/index.ts"],
+      "rs-giphy-test/*": ["dist/src/*"],
+      "rs-giphy-test": ["dist/src/index.ts"],
     },
     "noEmit": false,
     "declaration": true,
