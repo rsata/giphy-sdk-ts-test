@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIPromise } from 'rs-giphy-test/api-promise';
+import { APIPromise } from 'rs-giphy-test/core/api-promise';
 
 import util from 'node:util';
 import Giphy from 'rs-giphy-test';
