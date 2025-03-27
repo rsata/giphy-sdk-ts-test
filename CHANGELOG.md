@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2025-03-27)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/rsata/giphy-sdk-ts-test/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Chores
+
+* **client:** move misc public files to new `core/` directory, deprecate old paths ([#6](https://github.com/rsata/giphy-sdk-ts-test/issues/6)) ([95bb25d](https://github.com/rsata/giphy-sdk-ts-test/commit/95bb25decff617dd1e876bd737b48b5078ef2404))
+
 ## 0.1.0-alpha.1 (2025-03-19)
 
 Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/rsata/giphy-sdk-ts-test/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)
