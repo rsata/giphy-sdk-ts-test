@@ -1,6 +1,6 @@
 import fs from 'fs';
 import type { ResponseLike } from 'rs-giphy-test/internal/to-file';
-import { toFile } from 'rs-giphy-test/uploads';
+import { toFile } from 'rs-giphy-test/core/uploads';
 import { File } from 'node:buffer';
 
 class MyClass {
@@ -97,7 +97,7 @@ describe('missing File error message', () => {
   });
 
   test('is thrown', async () => {
-    const uploads = await import('rs-giphy-test/uploads');
+    const uploads = await import('rs-giphy-test/core/uploads');
     await expect(
       uploads.toFile(mockResponse({ url: 'https://example.com/my/audio.mp3' })),
     ).rejects.toMatchInlineSnapshot(
