@@ -1,26 +1,26 @@
-# Gifs
+# Giffffs
 
 Types:
 
-- <code><a href="./src/resources/gifs.ts">Gif</a></code>
-- <code><a href="./src/resources/gifs.ts">Image</a></code>
-- <code><a href="./src/resources/gifs.ts">Meta</a></code>
-- <code><a href="./src/resources/gifs.ts">Pagination</a></code>
-- <code><a href="./src/resources/gifs.ts">GifRetrieveResponse</a></code>
-- <code><a href="./src/resources/gifs.ts">GifListResponse</a></code>
-- <code><a href="./src/resources/gifs.ts">GifGetRandomResponse</a></code>
-- <code><a href="./src/resources/gifs.ts">GifGetTrendingResponse</a></code>
-- <code><a href="./src/resources/gifs.ts">GifSearchResponse</a></code>
-- <code><a href="./src/resources/gifs.ts">GifTranslateResponse</a></code>
+- <code><a href="./src/resources/giffffs.ts">Gif</a></code>
+- <code><a href="./src/resources/giffffs.ts">Image</a></code>
+- <code><a href="./src/resources/giffffs.ts">Meta</a></code>
+- <code><a href="./src/resources/giffffs.ts">Pagination</a></code>
+- <code><a href="./src/resources/giffffs.ts">GiffffRetrieveResponse</a></code>
+- <code><a href="./src/resources/giffffs.ts">GiffffListResponse</a></code>
+- <code><a href="./src/resources/giffffs.ts">GiffffGetRandomResponse</a></code>
+- <code><a href="./src/resources/giffffs.ts">GiffffGetTrendingResponse</a></code>
+- <code><a href="./src/resources/giffffs.ts">GiffffSearchResponse</a></code>
+- <code><a href="./src/resources/giffffs.ts">GiffffTranslateResponse</a></code>
 
 Methods:
 
-- <code title="get /gifs/{gifId}">client.gifs.<a href="./src/resources/gifs.ts">retrieve</a>(gifID) -> GifRetrieveResponse</code>
-- <code title="get /gifs">client.gifs.<a href="./src/resources/gifs.ts">list</a>({ ...params }) -> GifListResponse</code>
-- <code title="get /gifs/random">client.gifs.<a href="./src/resources/gifs.ts">getRandom</a>({ ...params }) -> GifGetRandomResponse</code>
-- <code title="get /gifs/trending">client.gifs.<a href="./src/resources/gifs.ts">getTrending</a>({ ...params }) -> GifGetTrendingResponse</code>
-- <code title="get /gifs/search">client.gifs.<a href="./src/resources/gifs.ts">search</a>({ ...params }) -> GifSearchResponse</code>
-- <code title="get /gifs/translate">client.gifs.<a href="./src/resources/gifs.ts">translate</a>({ ...params }) -> GifTranslateResponse</code>
+- <code title="get /gifs/{gifId}">client.giffffs.<a href="./src/resources/giffffs.ts">retrieve</a>(gifID) -> GiffffRetrieveResponse</code>
+- <code title="get /gifs">client.giffffs.<a href="./src/resources/giffffs.ts">list</a>({ ...params }) -> GiffffListResponse</code>
+- <code title="get /gifs/random">client.giffffs.<a href="./src/resources/giffffs.ts">getRandom</a>({ ...params }) -> GiffffGetRandomResponse</code>
+- <code title="get /gifs/trending">client.giffffs.<a href="./src/resources/giffffs.ts">getTrending</a>({ ...params }) -> GiffffGetTrendingResponse</code>
+- <code title="get /gifs/search">client.giffffs.<a href="./src/resources/giffffs.ts">search</a>({ ...params }) -> GiffffSearchResponse</code>
+- <code title="get /gifs/translate">client.giffffs.<a href="./src/resources/giffffs.ts">translate</a>({ ...params }) -> GiffffTranslateResponse</code>
 
 # Stickers
 

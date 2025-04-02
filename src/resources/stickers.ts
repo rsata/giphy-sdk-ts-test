@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
-import * as GifsAPI from './gifs';
+import * as GiffffsAPI from './giffffs';
 import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 
@@ -47,7 +47,7 @@ export class Stickers extends APIResource {
 }
 
 export interface StickerGetRandomResponse {
-  data?: GifsAPI.Gif;
+  data?: GiffffsAPI.Gif;
 
   /**
    * The Meta Object contains basic information regarding the request, whether it was
@@ -55,11 +55,11 @@ export interface StickerGetRandomResponse {
    * description of types of response codes the API might give you under different
    * cirumstances.
    */
-  meta?: GifsAPI.Meta;
+  meta?: GiffffsAPI.Meta;
 }
 
 export interface StickerGetTrendingResponse {
-  data?: Array<GifsAPI.Gif>;
+  data?: Array<GiffffsAPI.Gif>;
 
   /**
    * The Meta Object contains basic information regarding the request, whether it was
@@ -67,18 +67,18 @@ export interface StickerGetTrendingResponse {
    * description of types of response codes the API might give you under different
    * cirumstances.
    */
-  meta?: GifsAPI.Meta;
+  meta?: GiffffsAPI.Meta;
 
   /**
    * The Pagination Object contains information relating to the number of total
    * results available as well as the number of results fetched and their relative
    * positions.
    */
-  pagination?: GifsAPI.Pagination;
+  pagination?: GiffffsAPI.Pagination;
 }
 
 export interface StickerSearchResponse {
-  data?: Array<GifsAPI.Gif>;
+  data?: Array<GiffffsAPI.Gif>;
 
   /**
    * The Meta Object contains basic information regarding the request, whether it was
@@ -86,18 +86,18 @@ export interface StickerSearchResponse {
    * description of types of response codes the API might give you under different
    * cirumstances.
    */
-  meta?: GifsAPI.Meta;
+  meta?: GiffffsAPI.Meta;
 
   /**
    * The Pagination Object contains information relating to the number of total
    * results available as well as the number of results fetched and their relative
    * positions.
    */
-  pagination?: GifsAPI.Pagination;
+  pagination?: GiffffsAPI.Pagination;
 }
 
 export interface StickerTranslateResponse {
-  data?: GifsAPI.Gif;
+  data?: GiffffsAPI.Gif;
 
   /**
    * The Meta Object contains basic information regarding the request, whether it was
@@ -105,7 +105,7 @@ export interface StickerTranslateResponse {
    * description of types of response codes the API might give you under different
    * cirumstances.
    */
-  meta?: GifsAPI.Meta;
+  meta?: GiffffsAPI.Meta;
 }
 
 export interface StickerGetRandomParams {

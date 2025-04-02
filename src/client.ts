@@ -22,22 +22,22 @@ import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
 import {
   Gif,
-  GifGetRandomParams,
-  GifGetRandomResponse,
-  GifGetTrendingParams,
-  GifGetTrendingResponse,
-  GifListParams,
-  GifListResponse,
-  GifRetrieveResponse,
-  GifSearchParams,
-  GifSearchResponse,
-  GifTranslateParams,
-  GifTranslateResponse,
-  Gifs,
+  GiffffGetRandomParams,
+  GiffffGetRandomResponse,
+  GiffffGetTrendingParams,
+  GiffffGetTrendingResponse,
+  GiffffListParams,
+  GiffffListResponse,
+  GiffffRetrieveResponse,
+  GiffffSearchParams,
+  GiffffSearchResponse,
+  GiffffTranslateParams,
+  GiffffTranslateResponse,
+  Giffffs,
   Image,
   Meta,
   Pagination,
-} from './resources/gifs';
+} from './resources/giffffs';
 import {
   StickerGetRandomParams,
   StickerGetRandomResponse,
@@ -699,31 +699,31 @@ export class Giphy {
 
   static toFile = Uploads.toFile;
 
-  gifs: API.Gifs = new API.Gifs(this);
+  giffffs: API.Giffffs = new API.Giffffs(this);
   stickers: API.Stickers = new API.Stickers(this);
 }
-Giphy.Gifs = Gifs;
+Giphy.Giffffs = Giffffs;
 Giphy.Stickers = Stickers;
 export declare namespace Giphy {
   export type RequestOptions = Opts.RequestOptions;
 
   export {
-    Gifs as Gifs,
+    Giffffs as Giffffs,
     type Gif as Gif,
     type Image as Image,
     type Meta as Meta,
     type Pagination as Pagination,
-    type GifRetrieveResponse as GifRetrieveResponse,
-    type GifListResponse as GifListResponse,
-    type GifGetRandomResponse as GifGetRandomResponse,
-    type GifGetTrendingResponse as GifGetTrendingResponse,
-    type GifSearchResponse as GifSearchResponse,
-    type GifTranslateResponse as GifTranslateResponse,
-    type GifListParams as GifListParams,
-    type GifGetRandomParams as GifGetRandomParams,
-    type GifGetTrendingParams as GifGetTrendingParams,
-    type GifSearchParams as GifSearchParams,
-    type GifTranslateParams as GifTranslateParams,
+    type GiffffRetrieveResponse as GiffffRetrieveResponse,
+    type GiffffListResponse as GiffffListResponse,
+    type GiffffGetRandomResponse as GiffffGetRandomResponse,
+    type GiffffGetTrendingResponse as GiffffGetTrendingResponse,
+    type GiffffSearchResponse as GiffffSearchResponse,
+    type GiffffTranslateResponse as GiffffTranslateResponse,
+    type GiffffListParams as GiffffListParams,
+    type GiffffGetRandomParams as GiffffGetRandomParams,
+    type GiffffGetTrendingParams as GiffffGetTrendingParams,
+    type GiffffSearchParams as GiffffSearchParams,
+    type GiffffTranslateParams as GiffffTranslateParams,
   };
 
   export {

@@ -27,9 +27,9 @@ const client = new Giphy({
 });
 
 async function main() {
-  const gifs = await client.gifs.list();
+  const giffffs = await client.giffffs.list();
 
-  console.log(gifs.data);
+  console.log(giffffs.data);
 }
 
 main();
@@ -48,7 +48,7 @@ const client = new Giphy({
 });
 
 async function main() {
-  const gifs: Giphy.GifListResponse = await client.gifs.list();
+  const giffffs: Giphy.GiffffListResponse = await client.giffffs.list();
 }
 
 main();
@@ -65,7 +65,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const gifs = await client.gifs.list().catch(async (err) => {
+  const giffffs = await client.giffffs.list().catch(async (err) => {
     if (err instanceof Giphy.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
@@ -108,7 +108,7 @@ const client = new Giphy({
 });
 
 // Or, configure per-request:
-await client.gifs.list({
+await client.giffffs.list({
   maxRetries: 5,
 });
 ```
@@ -125,7 +125,7 @@ const client = new Giphy({
 });
 
 // Override per-request:
-await client.gifs.list({
+await client.giffffs.list({
   timeout: 5 * 1000,
 });
 ```
@@ -148,13 +148,13 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 ```ts
 const client = new Giphy();
 
-const response = await client.gifs.list().asResponse();
+const response = await client.giffffs.list().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: gifs, response: raw } = await client.gifs.list().withResponse();
+const { data: giffffs, response: raw } = await client.giffffs.list().withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(gifs.data);
+console.log(giffffs.data);
 ```
 
 ### Logging

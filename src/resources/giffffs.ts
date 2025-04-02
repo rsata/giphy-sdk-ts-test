@@ -1,23 +1,26 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
-import * as GifsAPI from './gifs';
+import * as GiffffsAPI from './giffffs';
 import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
-export class Gifs extends APIResource {
+export class Giffffs extends APIResource {
   /**
    * Returns a GIF given that GIF's unique ID
    */
-  retrieve(gifID: number, options?: RequestOptions): APIPromise<GifRetrieveResponse> {
+  retrieve(gifID: number, options?: RequestOptions): APIPromise<GiffffRetrieveResponse> {
     return this._client.get(path`/gifs/${gifID}`, options);
   }
 
   /**
    * A multiget version of the get GIF by ID endpoint.
    */
-  list(query: GifListParams | null | undefined = {}, options?: RequestOptions): APIPromise<GifListResponse> {
+  list(
+    query: GiffffListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<GiffffListResponse> {
     return this._client.get('/gifs', { query, ...options });
   }
 
@@ -26,9 +29,9 @@ export class Gifs extends APIResource {
    * random GIF from the GIPHY catalog.
    */
   getRandom(
-    query: GifGetRandomParams | null | undefined = {},
+    query: GiffffGetRandomParams | null | undefined = {},
     options?: RequestOptions,
-  ): APIPromise<GifGetRandomResponse> {
+  ): APIPromise<GiffffGetRandomResponse> {
     return this._client.get('/gifs/random', { query, ...options });
   }
 
@@ -38,9 +41,9 @@ export class Gifs extends APIResource {
    * results by default.
    */
   getTrending(
-    query: GifGetTrendingParams | null | undefined = {},
+    query: GiffffGetTrendingParams | null | undefined = {},
     options?: RequestOptions,
-  ): APIPromise<GifGetTrendingResponse> {
+  ): APIPromise<GiffffGetTrendingResponse> {
     return this._client.get('/gifs/trending', { query, ...options });
   }
 
@@ -49,7 +52,7 @@ export class Gifs extends APIResource {
    * ignored. Use a plus or url encode for phrases. Example paul+rudd, ryan+gosling
    * or american+psycho.
    */
-  search(query: GifSearchParams, options?: RequestOptions): APIPromise<GifSearchResponse> {
+  search(query: GiffffSearchParams, options?: RequestOptions): APIPromise<GiffffSearchResponse> {
     return this._client.get('/gifs/search', { query, ...options });
   }
 
@@ -58,7 +61,7 @@ export class Gifs extends APIResource {
    * translating from one vocabulary to another. In this case, words and phrases to
    * GIF
    */
-  translate(query: GifTranslateParams, options?: RequestOptions): APIPromise<GifTranslateResponse> {
+  translate(query: GiffffTranslateParams, options?: RequestOptions): APIPromise<GiffffTranslateResponse> {
     return this._client.get('/gifs/translate', { query, ...options });
   }
 }
@@ -176,110 +179,110 @@ export namespace Gif {
     /**
      * Data surrounding a version of this GIF downsized to be under 2mb.
      */
-    downsized?: GifsAPI.Image;
+    downsized?: GiffffsAPI.Image;
 
     /**
      * Data surrounding a version of this GIF downsized to be under 8mb.
      */
-    downsized_large?: GifsAPI.Image;
+    downsized_large?: GiffffsAPI.Image;
 
     /**
      * Data surrounding a version of this GIF downsized to be under 5mb.
      */
-    downsized_medium?: GifsAPI.Image;
+    downsized_medium?: GiffffsAPI.Image;
 
     /**
      * Data surrounding a version of this GIF downsized to be under 200kb.
      */
-    downsized_small?: GifsAPI.Image;
+    downsized_small?: GiffffsAPI.Image;
 
     /**
      * Data surrounding a static preview image of the downsized version of this GIF.
      */
-    downsized_still?: GifsAPI.Image;
+    downsized_still?: GiffffsAPI.Image;
 
     /**
      * Data surrounding versions of this GIF with a fixed height of 200 pixels. Good
      * for mobile use.
      */
-    fixed_height?: GifsAPI.Image;
+    fixed_height?: GiffffsAPI.Image;
 
     /**
      * Data surrounding versions of this GIF with a fixed height of 200 pixels and the
      * number of frames reduced to 6.
      */
-    fixed_height_downsampled?: GifsAPI.Image;
+    fixed_height_downsampled?: GiffffsAPI.Image;
 
     /**
      * Data surrounding versions of this GIF with a fixed height of 100 pixels. Good
      * for mobile keyboards.
      */
-    fixed_height_small?: GifsAPI.Image;
+    fixed_height_small?: GiffffsAPI.Image;
 
     /**
      * Data surrounding a static image of this GIF with a fixed height of 100 pixels.
      */
-    fixed_height_small_still?: GifsAPI.Image;
+    fixed_height_small_still?: GiffffsAPI.Image;
 
     /**
      * Data surrounding a static image of this GIF with a fixed height of 200 pixels.
      */
-    fixed_height_still?: GifsAPI.Image;
+    fixed_height_still?: GiffffsAPI.Image;
 
     /**
      * Data surrounding versions of this GIF with a fixed width of 200 pixels. Good for
      * mobile use.
      */
-    fixed_width?: GifsAPI.Image;
+    fixed_width?: GiffffsAPI.Image;
 
     /**
      * Data surrounding versions of this GIF with a fixed width of 200 pixels and the
      * number of frames reduced to 6.
      */
-    fixed_width_downsampled?: GifsAPI.Image;
+    fixed_width_downsampled?: GiffffsAPI.Image;
 
     /**
      * Data surrounding versions of this GIF with a fixed width of 100 pixels. Good for
      * mobile keyboards.
      */
-    fixed_width_small?: GifsAPI.Image;
+    fixed_width_small?: GiffffsAPI.Image;
 
     /**
      * Data surrounding a static image of this GIF with a fixed width of 100 pixels.
      */
-    fixed_width_small_still?: GifsAPI.Image;
+    fixed_width_small_still?: GiffffsAPI.Image;
 
     /**
      * Data surrounding a static image of this GIF with a fixed width of 200 pixels.
      */
-    fixed_width_still?: GifsAPI.Image;
+    fixed_width_still?: GiffffsAPI.Image;
 
     /**
      * Data surrounding a version of this GIF set to loop for 15 seconds.
      */
-    looping?: GifsAPI.Image;
+    looping?: GiffffsAPI.Image;
 
     /**
      * Data surrounding the original version of this GIF. Good for desktop use.
      */
-    original?: GifsAPI.Image;
+    original?: GiffffsAPI.Image;
 
     /**
      * Data surrounding a static preview image of the original GIF.
      */
-    original_still?: GifsAPI.Image;
+    original_still?: GiffffsAPI.Image;
 
     /**
      * Data surrounding a version of this GIF in .MP4 format limited to 50kb that
      * displays the first 1-2 seconds of the GIF.
      */
-    preview?: GifsAPI.Image;
+    preview?: GiffffsAPI.Image;
 
     /**
      * Data surrounding a version of this GIF limited to 50kb that displays the first
      * 1-2 seconds of the GIF.
      */
-    preview_gif?: GifsAPI.Image;
+    preview_gif?: GiffffsAPI.Image;
   }
 
   /**
@@ -412,7 +415,7 @@ export interface Pagination {
   total_count?: number;
 }
 
-export interface GifRetrieveResponse {
+export interface GiffffRetrieveResponse {
   data?: Gif;
 
   /**
@@ -424,7 +427,7 @@ export interface GifRetrieveResponse {
   meta?: Meta;
 }
 
-export interface GifListResponse {
+export interface GiffffListResponse {
   data?: Array<Gif>;
 
   /**
@@ -443,7 +446,7 @@ export interface GifListResponse {
   pagination?: Pagination;
 }
 
-export interface GifGetRandomResponse {
+export interface GiffffGetRandomResponse {
   data?: Gif;
 
   /**
@@ -455,7 +458,7 @@ export interface GifGetRandomResponse {
   meta?: Meta;
 }
 
-export interface GifGetTrendingResponse {
+export interface GiffffGetTrendingResponse {
   data?: Array<Gif>;
 
   /**
@@ -474,7 +477,7 @@ export interface GifGetTrendingResponse {
   pagination?: Pagination;
 }
 
-export interface GifSearchResponse {
+export interface GiffffSearchResponse {
   data?: Array<Gif>;
 
   /**
@@ -493,7 +496,7 @@ export interface GifSearchResponse {
   pagination?: Pagination;
 }
 
-export interface GifTranslateResponse {
+export interface GiffffTranslateResponse {
   data?: Gif;
 
   /**
@@ -505,14 +508,14 @@ export interface GifTranslateResponse {
   meta?: Meta;
 }
 
-export interface GifListParams {
+export interface GiffffListParams {
   /**
    * Filters results by specified GIF IDs, separated by commas.
    */
   ids?: string;
 }
 
-export interface GifGetRandomParams {
+export interface GiffffGetRandomParams {
   /**
    * Filters results by specified rating.
    */
@@ -524,7 +527,7 @@ export interface GifGetRandomParams {
   tag?: string;
 }
 
-export interface GifGetTrendingParams {
+export interface GiffffGetTrendingParams {
   /**
    * The maximum number of records to return.
    */
@@ -541,7 +544,7 @@ export interface GifGetTrendingParams {
   rating?: string;
 }
 
-export interface GifSearchParams {
+export interface GiffffSearchParams {
   /**
    * Search query term or prhase.
    */
@@ -569,29 +572,29 @@ export interface GifSearchParams {
   rating?: string;
 }
 
-export interface GifTranslateParams {
+export interface GiffffTranslateParams {
   /**
    * Search term.
    */
   s: string;
 }
 
-export declare namespace Gifs {
+export declare namespace Giffffs {
   export {
     type Gif as Gif,
     type Image as Image,
     type Meta as Meta,
     type Pagination as Pagination,
-    type GifRetrieveResponse as GifRetrieveResponse,
-    type GifListResponse as GifListResponse,
-    type GifGetRandomResponse as GifGetRandomResponse,
-    type GifGetTrendingResponse as GifGetTrendingResponse,
-    type GifSearchResponse as GifSearchResponse,
-    type GifTranslateResponse as GifTranslateResponse,
-    type GifListParams as GifListParams,
-    type GifGetRandomParams as GifGetRandomParams,
-    type GifGetTrendingParams as GifGetTrendingParams,
-    type GifSearchParams as GifSearchParams,
-    type GifTranslateParams as GifTranslateParams,
+    type GiffffRetrieveResponse as GiffffRetrieveResponse,
+    type GiffffListResponse as GiffffListResponse,
+    type GiffffGetRandomResponse as GiffffGetRandomResponse,
+    type GiffffGetTrendingResponse as GiffffGetTrendingResponse,
+    type GiffffSearchResponse as GiffffSearchResponse,
+    type GiffffTranslateResponse as GiffffTranslateResponse,
+    type GiffffListParams as GiffffListParams,
+    type GiffffGetRandomParams as GiffffGetRandomParams,
+    type GiffffGetTrendingParams as GiffffGetTrendingParams,
+    type GiffffSearchParams as GiffffSearchParams,
+    type GiffffTranslateParams as GiffffTranslateParams,
   };
 }
