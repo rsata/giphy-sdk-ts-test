@@ -27,9 +27,9 @@ const client = new Giphy({
 });
 
 async function main() {
-  const gif = await client.gifs.list();
+  const gifs = await client.gifs.list();
 
-  console.log(gif.data);
+  console.log(gifs.data);
 }
 
 main();
@@ -48,7 +48,7 @@ const client = new Giphy({
 });
 
 async function main() {
-  const gif: Giphy.GifListResponse = await client.gifs.list();
+  const gifs: Giphy.GifListResponse = await client.gifs.list();
 }
 
 main();
@@ -65,7 +65,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const gif = await client.gifs.list().catch(async (err) => {
+  const gifs = await client.gifs.list().catch(async (err) => {
     if (err instanceof Giphy.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
@@ -152,9 +152,9 @@ const response = await client.gifs.list().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: gif, response: raw } = await client.gifs.list().withResponse();
+const { data: gifs, response: raw } = await client.gifs.list().withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(gif.data);
+console.log(gifs.data);
 ```
 
 ### Logging
