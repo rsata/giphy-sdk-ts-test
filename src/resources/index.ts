@@ -1,23 +1,23 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 export {
-  Gifs,
+  Giffffs,
   type Gif,
   type Image,
   type Meta,
   type Pagination,
-  type GifRetrieveResponse,
-  type GifListResponse,
-  type GifGetRandomResponse,
-  type GifGetTrendingResponse,
-  type GifSearchResponse,
-  type GifTranslateResponse,
-  type GifListParams,
-  type GifGetRandomParams,
-  type GifGetTrendingParams,
-  type GifSearchParams,
-  type GifTranslateParams,
-} from './gifs';
+  type GiffffRetrieveResponse,
+  type GiffffListResponse,
+  type GiffffGetRandomResponse,
+  type GiffffGetTrendingResponse,
+  type GiffffSearchResponse,
+  type GiffffTranslateResponse,
+  type GiffffListParams,
+  type GiffffGetRandomParams,
+  type GiffffGetTrendingParams,
+  type GiffffSearchParams,
+  type GiffffTranslateParams,
+} from './giffffs';
 export {
   Stickers,
   type StickerGetRandomResponse,
