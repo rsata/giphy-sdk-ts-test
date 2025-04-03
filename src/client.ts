@@ -62,7 +62,7 @@ export interface ClientOptions {
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
-   * Defaults to process.env['GIPHY_BASE_URL'].
+   * Defaults to process.env['GIPHY2_BASE_URL'].
    */
   baseURL?: string | null | undefined;
 
@@ -114,7 +114,7 @@ export interface ClientOptions {
   /**
    * Set the log level.
    *
-   * Defaults to process.env['GIPHY_LOG'] or 'warn' if it isn't set.
+   * Defaults to process.env['GIPHY2_LOG'] or 'warn' if it isn't set.
    */
   logLevel?: LogLevel | undefined;
 
@@ -127,9 +127,9 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Giphy API.
+ * API Client for interfacing with the Giphy2 API.
  */
-export class Giphy {
+export class Giphy2 {
   apiKey: string | null;
 
   baseURL: string;
@@ -145,10 +145,10 @@ export class Giphy {
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the Giphy API.
+   * API Client for interfacing with the Giphy2 API.
    *
    * @param {string | null | undefined} [opts.apiKey=process.env['GIPHY_API_KEY'] ?? null]
-   * @param {string} [opts.baseURL=process.env['GIPHY_BASE_URL'] ?? https://api.giphy.com/v1] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['GIPHY2_BASE_URL'] ?? https://api.giphy.com/v1] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
    * @param {Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -157,7 +157,7 @@ export class Giphy {
    * @param {Record<string, string | undefined>} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
   constructor({
-    baseURL = readEnv('GIPHY_BASE_URL'),
+    baseURL = readEnv('GIPHY2_BASE_URL'),
     apiKey = readEnv('GIPHY_API_KEY') ?? null,
     ...opts
   }: ClientOptions = {}) {
@@ -168,14 +168,14 @@ export class Giphy {
     };
 
     this.baseURL = options.baseURL!;
-    this.timeout = options.timeout ?? Giphy.DEFAULT_TIMEOUT /* 1 minute */;
+    this.timeout = options.timeout ?? Giphy2.DEFAULT_TIMEOUT /* 1 minute */;
     this.logger = options.logger ?? console;
     const defaultLogLevel = 'warn';
     // Set default logLevel early so that we can log a warning in parseLogLevel.
     this.logLevel = defaultLogLevel;
     this.logLevel =
       parseLogLevel(options.logLevel, 'ClientOptions.logLevel', this) ??
-      parseLogLevel(readEnv('GIPHY_LOG'), "process.env['GIPHY_LOG']", this) ??
+      parseLogLevel(readEnv('GIPHY2_LOG'), "process.env['GIPHY2_LOG']", this) ??
       defaultLogLevel;
     this.fetchOptions = options.fetchOptions;
     this.maxRetries = options.maxRetries ?? 2;
@@ -215,7 +215,7 @@ export class Giphy {
         if (value === null) {
           return `${encodeURIComponent(key)}=`;
         }
-        throw new Errors.GiphyError(
+        throw new Errors.Giphy2Error(
           `Cannot stringify type ${typeof value}; Expected string, number, boolean, or null. If you need to pass nested query parameters, you can manually encode them, e.g. { query: { 'foo[key1]': value1, 'foo[key2]': value2 } }, and please open a GitHub issue requesting better support for your use case.`,
         );
       })
@@ -680,10 +680,10 @@ export class Giphy {
     }
   }
 
-  static Giphy = this;
+  static Giphy2 = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static GiphyError = Errors.GiphyError;
+  static Giphy2Error = Errors.Giphy2Error;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -702,9 +702,9 @@ export class Giphy {
   giffffs: API.Giffffs = new API.Giffffs(this);
   stickers: API.Stickers = new API.Stickers(this);
 }
-Giphy.Giffffs = Giffffs;
-Giphy.Stickers = Stickers;
-export declare namespace Giphy {
+Giphy2.Giffffs = Giffffs;
+Giphy2.Stickers = Stickers;
+export declare namespace Giphy2 {
   export type RequestOptions = Opts.RequestOptions;
 
   export {
