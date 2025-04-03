@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Giphy from 'rs-giphy-test';
+import Giphy2 from 'rs-giphy-test';
 
-const client = new Giphy({
+const client = new Giphy2({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
@@ -36,7 +36,7 @@ describe('resource giffffs', () => {
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(client.giffffs.list({ ids: 'ids' }, { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Giphy.NotFoundError,
+      Giphy2.NotFoundError,
     );
   });
 
@@ -57,7 +57,7 @@ describe('resource giffffs', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.giffffs.getRandom({ rating: 'rating', tag: 'tag' }, { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Giphy.NotFoundError);
+    ).rejects.toThrow(Giphy2.NotFoundError);
   });
 
   // skipped: tests are disabled for the time being
@@ -80,7 +80,7 @@ describe('resource giffffs', () => {
         { limit: 0, offset: 0, rating: 'rating' },
         { path: '/_stainless_unknown_path' },
       ),
-    ).rejects.toThrow(Giphy.NotFoundError);
+    ).rejects.toThrow(Giphy2.NotFoundError);
   });
 
   // skipped: tests are disabled for the time being

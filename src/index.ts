@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export { Giphy as default } from './client';
+export { Giphy2 as default } from './client';
 
 export { type Uploadable, toFile } from './core/uploads';
 export { APIPromise } from './core/api-promise';
-export { Giphy, type ClientOptions } from './client';
+export { Giphy2, type ClientOptions } from './client';
 export {
-  GiphyError,
+  Giphy2Error,
   APIError,
   APIConnectionError,
   APIConnectionTimeoutError,

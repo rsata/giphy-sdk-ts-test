@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { Giphy } from 'rs-giphy-test';
+import { Giphy2 } from 'rs-giphy-test';
 
-const { stringifyQuery } = Giphy.prototype as any;
+const { stringifyQuery } = Giphy2.prototype as any;
 
 describe(stringifyQuery, () => {
   for (const [input, expected] of [
