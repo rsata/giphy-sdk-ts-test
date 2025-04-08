@@ -198,7 +198,7 @@ export class Giphy2 {
     return;
   }
 
-  protected authHeaders(opts: FinalRequestOptions): Headers | undefined {
+  protected authHeaders(opts: FinalRequestOptions): NullableHeaders | undefined {
     return undefined;
   }
 
