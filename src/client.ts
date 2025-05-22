@@ -13,31 +13,31 @@ import { getPlatformHeaders } from './internal/detect-platform';
 import * as Shims from './internal/shims';
 import * as Opts from './internal/request-options';
 import { VERSION } from './version';
-import * as Errors from './error';
-import * as Uploads from './uploads';
+import * as Errors from './core/error';
+import * as Uploads from './core/uploads';
 import * as API from './resources/index';
-import { APIPromise } from './api-promise';
+import { APIPromise } from './core/api-promise';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
 import {
   Gif,
-  GifGetRandomParams,
-  GifGetRandomResponse,
-  GifGetTrendingParams,
-  GifGetTrendingResponse,
-  GifListParams,
-  GifListResponse,
-  GifRetrieveResponse,
-  GifSearchParams,
-  GifSearchResponse,
-  GifTranslateParams,
-  GifTranslateResponse,
-  Gifs,
+  GiffffGetRandomParams,
+  GiffffGetRandomResponse,
+  GiffffGetTrendingParams,
+  GiffffGetTrendingResponse,
+  GiffffListParams,
+  GiffffListResponse,
+  GiffffRetrieveResponse,
+  GiffffSearchParams,
+  GiffffSearchResponse,
+  GiffffTranslateParams,
+  GiffffTranslateResponse,
+  Giffffs,
   Image,
   Meta,
   Pagination,
-} from './resources/gifs';
+} from './resources/giffffs';
 import {
   StickerGetRandomParams,
   StickerGetRandomResponse,
@@ -62,7 +62,7 @@ export interface ClientOptions {
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
-   * Defaults to process.env['GIPHY_BASE_URL'].
+   * Defaults to process.env['GIPHY2_BASE_URL'].
    */
   baseURL?: string | null | undefined;
 
@@ -114,7 +114,7 @@ export interface ClientOptions {
   /**
    * Set the log level.
    *
-   * Defaults to process.env['GIPHY_LOG'] or 'warn' if it isn't set.
+   * Defaults to process.env['GIPHY2_LOG'] or 'warn' if it isn't set.
    */
   logLevel?: LogLevel | undefined;
 
@@ -127,9 +127,9 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Giphy API.
+ * API Client for interfacing with the Giphy2 API.
  */
-export class Giphy {
+export class Giphy2 {
   apiKey: string | null;
 
   baseURL: string;
@@ -145,10 +145,10 @@ export class Giphy {
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the Giphy API.
+   * API Client for interfacing with the Giphy2 API.
    *
    * @param {string | null | undefined} [opts.apiKey=process.env['GIPHY_API_KEY'] ?? null]
-   * @param {string} [opts.baseURL=process.env['GIPHY_BASE_URL'] ?? https://api.giphy.com/v1] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['GIPHY2_BASE_URL'] ?? https://api.giphy.com/v1] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
    * @param {Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -157,7 +157,7 @@ export class Giphy {
    * @param {Record<string, string | undefined>} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
   constructor({
-    baseURL = readEnv('GIPHY_BASE_URL'),
+    baseURL = readEnv('GIPHY2_BASE_URL'),
     apiKey = readEnv('GIPHY_API_KEY') ?? null,
     ...opts
   }: ClientOptions = {}) {
@@ -168,14 +168,14 @@ export class Giphy {
     };
 
     this.baseURL = options.baseURL!;
-    this.timeout = options.timeout ?? Giphy.DEFAULT_TIMEOUT /* 1 minute */;
+    this.timeout = options.timeout ?? Giphy2.DEFAULT_TIMEOUT /* 1 minute */;
     this.logger = options.logger ?? console;
     const defaultLogLevel = 'warn';
     // Set default logLevel early so that we can log a warning in parseLogLevel.
     this.logLevel = defaultLogLevel;
     this.logLevel =
       parseLogLevel(options.logLevel, 'ClientOptions.logLevel', this) ??
-      parseLogLevel(readEnv('GIPHY_LOG'), "process.env['GIPHY_LOG']", this) ??
+      parseLogLevel(readEnv('GIPHY2_LOG'), "process.env['GIPHY2_LOG']", this) ??
       defaultLogLevel;
     this.fetchOptions = options.fetchOptions;
     this.maxRetries = options.maxRetries ?? 2;
@@ -185,6 +185,23 @@ export class Giphy {
     this._options = options;
 
     this.apiKey = apiKey;
+  }
+
+  /**
+   * Create a new client instance re-using the same options given to the current client with optional overriding.
+   */
+  withOptions(options: Partial<ClientOptions>): this {
+    return new (this.constructor as any as new (props: ClientOptions) => typeof this)({
+      ...this._options,
+      baseURL: this.baseURL,
+      maxRetries: this.maxRetries,
+      timeout: this.timeout,
+      logger: this.logger,
+      logLevel: this.logLevel,
+      fetchOptions: this.fetchOptions,
+      apiKey: this.apiKey,
+      ...options,
+    });
   }
 
   protected defaultQuery(): Record<string, string | undefined> | undefined {
@@ -198,8 +215,8 @@ export class Giphy {
     return;
   }
 
-  protected authHeaders(opts: FinalRequestOptions): Headers | undefined {
-    return undefined;
+  protected authHeaders(opts: FinalRequestOptions): NullableHeaders | undefined {
+    return buildHeaders([]);
   }
 
   /**
@@ -215,7 +232,7 @@ export class Giphy {
         if (value === null) {
           return `${encodeURIComponent(key)}=`;
         }
-        throw new Errors.GiphyError(
+        throw new Errors.Giphy2Error(
           `Cannot stringify type ${typeof value}; Expected string, number, boolean, or null. If you need to pass nested query parameters, you can manually encode them, e.g. { query: { 'foo[key1]': value1, 'foo[key2]': value2 } }, and please open a GitHub issue requesting better support for your use case.`,
         );
       })
@@ -494,12 +511,12 @@ export class Giphy {
       fetchOptions.method = method.toUpperCase();
     }
 
-    return (
+    try {
       // use undefined this binding; fetch errors if bound to something else in browser/cloudflare
-      this.fetch.call(undefined, url, fetchOptions).finally(() => {
-        clearTimeout(timeout);
-      })
-    );
+      return await this.fetch.call(undefined, url, fetchOptions);
+    } finally {
+      clearTimeout(timeout);
+    }
   }
 
   private shouldRetry(response: Response): boolean {
@@ -580,17 +597,17 @@ export class Giphy {
   }
 
   buildRequest(
-    options: FinalRequestOptions,
+    inputOptions: FinalRequestOptions,
     { retryCount = 0 }: { retryCount?: number } = {},
   ): { req: FinalizedRequestInit; url: string; timeout: number } {
-    options = { ...options };
+    const options = { ...inputOptions };
     const { method, path, query } = options;
 
     const url = this.buildURL(path!, query as Record<string, unknown>);
     if ('timeout' in options) validatePositiveInteger('timeout', options.timeout);
     options.timeout = options.timeout ?? this.timeout;
     const { bodyHeaders, body } = this.buildBody({ options });
-    const reqHeaders = this.buildHeaders({ options, method, bodyHeaders, retryCount });
+    const reqHeaders = this.buildHeaders({ options: inputOptions, method, bodyHeaders, retryCount });
 
     const req: FinalizedRequestInit = {
       method,
@@ -629,7 +646,7 @@ export class Giphy {
         Accept: 'application/json',
         'User-Agent': this.getUserAgent(),
         'X-Stainless-Retry-Count': String(retryCount),
-        ...(options.timeout ? { 'X-Stainless-Timeout': String(options.timeout) } : {}),
+        ...(options.timeout ? { 'X-Stainless-Timeout': String(Math.trunc(options.timeout / 1000)) } : {}),
         ...getPlatformHeaders(),
       },
       this.authHeaders(options),
@@ -680,10 +697,10 @@ export class Giphy {
     }
   }
 
-  static Giphy = this;
+  static Giphy2 = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static GiphyError = Errors.GiphyError;
+  static Giphy2Error = Errors.Giphy2Error;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -699,31 +716,31 @@ export class Giphy {
 
   static toFile = Uploads.toFile;
 
-  gifs: API.Gifs = new API.Gifs(this);
+  giffffs: API.Giffffs = new API.Giffffs(this);
   stickers: API.Stickers = new API.Stickers(this);
 }
-Giphy.Gifs = Gifs;
-Giphy.Stickers = Stickers;
-export declare namespace Giphy {
+Giphy2.Giffffs = Giffffs;
+Giphy2.Stickers = Stickers;
+export declare namespace Giphy2 {
   export type RequestOptions = Opts.RequestOptions;
 
   export {
-    Gifs as Gifs,
+    Giffffs as Giffffs,
     type Gif as Gif,
     type Image as Image,
     type Meta as Meta,
     type Pagination as Pagination,
-    type GifRetrieveResponse as GifRetrieveResponse,
-    type GifListResponse as GifListResponse,
-    type GifGetRandomResponse as GifGetRandomResponse,
-    type GifGetTrendingResponse as GifGetTrendingResponse,
-    type GifSearchResponse as GifSearchResponse,
-    type GifTranslateResponse as GifTranslateResponse,
-    type GifListParams as GifListParams,
-    type GifGetRandomParams as GifGetRandomParams,
-    type GifGetTrendingParams as GifGetTrendingParams,
-    type GifSearchParams as GifSearchParams,
-    type GifTranslateParams as GifTranslateParams,
+    type GiffffRetrieveResponse as GiffffRetrieveResponse,
+    type GiffffListResponse as GiffffListResponse,
+    type GiffffGetRandomResponse as GiffffGetRandomResponse,
+    type GiffffGetTrendingResponse as GiffffGetTrendingResponse,
+    type GiffffSearchResponse as GiffffSearchResponse,
+    type GiffffTranslateResponse as GiffffTranslateResponse,
+    type GiffffListParams as GiffffListParams,
+    type GiffffGetRandomParams as GiffffGetRandomParams,
+    type GiffffGetTrendingParams as GiffffGetTrendingParams,
+    type GiffffSearchParams as GiffffSearchParams,
+    type GiffffTranslateParams as GiffffTranslateParams,
   };
 
   export {

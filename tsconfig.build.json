@@ -6,7 +6,7 @@
     "rootDir": "./dist/src",
     "paths": {
       "rs-giphy-test/*": ["dist/src/*"],
-      "rs-giphy-test": ["dist/src/index.ts"],
+      "rs-giphy-test": ["dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,

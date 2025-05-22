@@ -1,5 +1,5 @@
 import { multipartFormRequestOptions, createForm } from 'rs-giphy-test/internal/uploads';
-import { toFile } from 'rs-giphy-test/uploads';
+import { toFile } from 'rs-giphy-test/core/uploads';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {
